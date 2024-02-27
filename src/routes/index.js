@@ -1,12 +1,12 @@
 // Tat ca file trong route phai nap vao index.js
-const newRoute = require('./news')
-const siteRoute = require('./site')
+const newRoute = require('./news');
+const siteRoute = require('./site');
 
-function route(app){
+function route(app) {
     // app.get('/', (req, res)=> {
     //     res.render('home')
     //  })
-     
+
     //  app.get('/news', (req, res)=> {
     //    res.render('news')
     //  })
@@ -15,13 +15,13 @@ function route(app){
     //     // console.log(req.query.q)
     //     res.render("search")
     //   })
-    app.use('/news',newRoute)
-    app.use('/',siteRoute)
-     
+    app.use('/news', newRoute);
+    app.use('/', siteRoute);
+
     //  app.post("/search",(req,res)=>{
     //    console.log(req.body)
-    //    res.render("search")  
+    //    res.render("search")
     //  })
 }
 
-module.exports = route
+module.exports = route;
