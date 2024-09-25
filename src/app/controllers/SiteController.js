@@ -3,11 +3,11 @@ class SiteController {
         res.render('home');
     }
 
-    search(req, res) {
+                                               search(req, res) {
         res.send('Search');
     }
 
-    contact(req, res) {
+                                            contact(req, res) {
         res.send('Contact');
     }
 }
