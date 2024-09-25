@@ -1,15 +1,15 @@
-class SiteController{
+class SiteController {
     index(req, res) {
-        res.render('home')
+        res.render('home');
     }
 
     search(req, res) {
-        res.send('Search')
+        res.send('Search');
     }
 
     contact(req, res) {
-        res.send('Contact')
+        res.send('Contact');
     }
 }
 
-module.exports = new SiteController
+module.exports = new SiteController();
