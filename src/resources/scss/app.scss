@@ -1,0 +1,21 @@
+.header{
+    background-color: cadetblue!important;
+}
+
+.user-avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 4px;
+}
+
+a{
+    color: #000;
+    font-weight: 400;
+    &:hover{
+        color: #000;
+        opacity: 0.9;
+        text-shadow: 0.4px 0px 0.2px;
+    }
+}
