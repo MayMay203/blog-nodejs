@@ -3,7 +3,7 @@ const Course = require('../models/Course')
 class MeController {
   // [GET] /me/stored/courses
   storedCourses(req, res, next) {
-    Course.find({})
+    Course.find({deleteAt: null})
       .lean()
       .then((courses) => res.render('me/stored-courses', {courses}))
       .catch(next)
