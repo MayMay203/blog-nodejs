@@ -4,7 +4,7 @@ const slug = require('mongoose-slug-updater')
 const mongooseDelete = require('mongoose-delete')
 const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-const Course = new Schema(
+const CourseSchema = new Schema(
   {
     _id: { type: Number },
     name: { type: String, required: true },
@@ -20,9 +20,18 @@ const Course = new Schema(
   },
 )
 
+// Custom query helpers
+CourseSchema.query.sortable = function (req) {
+  if (req.query.hasOwnProperty('_sort')) {
+    const isValidType = ['asc', 'desc'].includes(req.query.type)
+    return this.sort({ [req.query.column]: isValidType ? req.query.type : 'desc' })
+  }
+  return this
+}
+
 // Add plugin
 mongoose.plugin(slug)
-Course.plugin(AutoIncrement);//Mặc định là áp dụng cho trường id
-Course.plugin(mongooseDelete, { overrideMethods: 'all', deletedAt: true })
+CourseSchema.plugin(AutoIncrement) //Mặc định là áp dụng cho trường id
+CourseSchema.plugin(mongooseDelete, { overrideMethods: 'all', deletedAt: true })
 
-module.exports = mongoose.model('Course', Course)
+module.exports = mongoose.model('Course', CourseSchema)

@@ -10,7 +10,7 @@ const methodOverride = require('method-override')
 const app = express()
 app.use(methodOverride('_method'))
 // Middleware
-const sortMiddleware = require('./app/middlewares/sortMidlleware.x')
+const sortMiddleware = require('./app/middlewares/sortMiddleware')
 // Custom middleware
 app.use(sortMiddleware)
 // ConnectDB
@@ -24,28 +24,7 @@ app.engine(
   'hbs',
   handlebars({
     extname: '.hbs',
-    helpers: {
-      sum: (a, b) => a + b,
-      sortable: (field, sort) => {
-        const sortType = field === sort.column ? sort.type : 'default'
-        const icons = {
-          default: 'fa-solid fa-sort',
-          asc: 'fa-solid fa-arrow-down-short-wide',
-          desc: 'fa-solid fa-arrow-down-wide-short',
-        }
-        const types = {
-          default: 'desc',
-          asc: 'desc',
-          desc: 'asc',
-        }
-        const icon = icons[sortType]
-        const type = types[sort.type]
-        return `
-         <a href="?_sort&column=${field}&type=${type}">
-          <i class="${icon}"></i>
-        </a>`
-      }
-    },
+    helpers: require('./helpers/handlebars')
   }),
 )
 app.set('view engine', 'hbs')
