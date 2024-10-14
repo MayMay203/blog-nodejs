@@ -10,9 +10,9 @@ const methodOverride = require('method-override')
 const app = express()
 app.use(methodOverride('_method'))
 // Middleware
-const SortMiddleware = require('./app/middlewares/SortMidlleware')
+const sortMiddleware = require('./app/middlewares/sortMidlleware.x')
 // Custom middleware
-app.use(SortMiddleware)
+app.use(sortMiddleware)
 // ConnectDB
 const port = 3001
 
